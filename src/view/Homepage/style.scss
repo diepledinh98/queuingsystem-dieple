@@ -1,0 +1,143 @@
+.homepage {
+    display: flex;
+
+    .device_inn {
+        .ant-progress-text {
+            display: none;
+        }
+    }
+
+    .homepage_right {
+
+        margin-left: 24px;
+        padding: 70px 24px 24px 24px;
+
+        background: #FFFFFF;
+        /* Dropdown */
+
+        box-shadow: 0px 4px 6px rgba(219, 219, 219, 0.5);
+        border-radius: 8px 0px 0px 8px;
+
+        .title_right {
+            font-weight: 700;
+            font-size: 24px;
+            color: #FF7506;
+            margin-bottom: 16px;
+        }
+
+        .tq_item {
+            position: relative;
+            width: 353px;
+            height: 83px;
+            background: #FFFFFF;
+            box-shadow: 2px 2px 15px rgba(70, 64, 67, 0.1);
+            border-radius: 12px;
+            display: flex;
+            margin-bottom: 12px;
+
+            .device_out {
+                position: absolute;
+                top: 11px;
+                left: 16px;
+
+                .ant-progress-inner {
+                    width: 60px !important;
+                    height: 60px !important;
+                    font-size: 14px !important;
+
+                    // .ant-progress-circle-path {
+                    //     // stroke: #FF7506;
+                    // }
+                }
+            }
+
+
+
+            .device_in {
+                position: absolute;
+                top: 16px;
+                left: 21px;
+
+                .ant-progress-inner {
+                    width: 50px;
+                    height: 50px;
+                    font-size: 14px;
+
+                    // .ant-progress-circle-path {
+                    //     stroke: #7E7D88;
+                    // }
+                }
+
+                .ant-progress-text {
+                    display: none;
+                }
+            }
+
+
+
+            .tq_name {
+                margin-left: 88px;
+                font-weight: 800;
+                font-size: 24px;
+                color: #535261;
+                display: flex;
+                flex-direction: column;
+                padding-top: 14px;
+
+                span {
+                    font-weight: 600;
+                    font-size: 14px;
+
+                }
+            }
+
+            .tq_info {
+                margin-left: 40px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+
+                .tq_info_item {
+                    display: flex;
+                    gap: 4px;
+
+
+                    .dot {
+                        margin-top: 6px;
+                        width: 4px;
+                        height: 4px;
+
+                        border-radius: 4px;
+
+                    }
+
+                    .info_item_name {
+
+                        font-weight: 400;
+                        font-size: 12px;
+                        color: #7E7D88;
+                    }
+
+                    .info_item_number {
+
+                        font-weight: 700;
+                        font-size: 14px;
+                        color: #FF7506;
+                    }
+                }
+            }
+        }
+
+        .site-calendar-demo-card {
+            width: 353px;
+            height: 336px;
+            background: #FFFFFF;
+            /* Pink shadow */
+
+            box-shadow: 2px 2px 15px rgba(70, 64, 67, 0.1);
+            border-radius: 12px;
+        }
+    }
+}

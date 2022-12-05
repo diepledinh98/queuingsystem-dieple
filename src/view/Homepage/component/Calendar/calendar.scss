@@ -1,0 +1,87 @@
+.site-calendar-customize-header-wrapper {
+    width: 353px;
+    height: 336px
+}
+
+.calendar__overview-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        color: #ff7506;
+        cursor: pointer;
+
+        &-left {}
+
+        &-right {}
+    }
+
+    &-moment {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        padding: 10px 4px;
+
+        span {
+            color: #ff7506;
+        }
+
+        &-date {}
+
+        &-month {}
+
+        &-year {}
+    }
+}
+
+.ant-picker-body {}
+
+.ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner {
+    &:hover {
+        width: 36px;
+        height: 36px;
+        background-color: #ff7506;
+    }
+
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    background-color: #ff7506;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+        border: 1px solid #ff7506;
+        border-radius: 8px;
+    }
+}
+
+.ant-picker-content {
+    tr {
+        height: 50px;
+
+        td {
+            height: 100%;
+        }
+
+        th {
+            background-color: #ffff;
+            color: #ff7506 !important;
+        }
+    }
+}
+
+td.ant-picker-cell-selected {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

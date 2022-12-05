@@ -1,0 +1,19 @@
+.logout {
+    width: 176px;
+    height: 48px;
+    background: #FFF2E7;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #FF7506;
+    line-height: 48px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 100px;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}

@@ -1,0 +1,131 @@
+.addservice__page {
+    .title__addservice {
+        font-weight: 700;
+        font-size: 24px;
+        color: #FF7506;
+        margin-top: 50px;
+
+    }
+
+    .box__addservice {
+        margin-top: 24px;
+        width: 1178px;
+        height: 534px;
+        background: #FFFFFF;
+        box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
+        border-radius: 16px;
+        padding-left: 24px;
+
+        .title_box {
+            padding-top: 16px;
+            padding-bottom: 16px;
+            font-weight: 700;
+            font-size: 20px;
+            color: #FF7506;
+        }
+
+        p {
+            font-weight: 600;
+            font-size: 16px;
+            color: #282739;
+            margin-top: 4px;
+            margin-bottom: 6px;
+        }
+
+        .info__input {
+            width: 553px;
+            height: 44px;
+            padding: 10px 270px 10px 12px;
+            background: #FFFFFF;
+            /* Gray/$-gray-100 */
+
+            border: 1.5px solid #D4D4D7;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .textarea {
+            width: 553px;
+            height: 132px;
+            background: #FFFFFF;
+            /* Gray/$-gray-100 */
+
+
+            border-radius: 8px;
+        }
+
+        .Checkbox {}
+
+        .provide__number {
+            margin-top: 16px;
+            font-size: 20px;
+
+            .check {
+                font-weight: 600;
+                font-size: 16px;
+                color: #282739;
+                display: flex;
+                flex-direction: column;
+
+                .checkbox {
+                    margin-top: 12px;
+                }
+            }
+
+            .input__number {
+                width: 61px;
+                height: 44px;
+                background: #FFFFFF;
+                /* Gray/$-gray-100 */
+
+                border: 1.5px solid #D4D4D7;
+                border-radius: 8px;
+                margin: 0px 15px;
+            }
+        }
+    }
+
+    .action__add {
+        display: flex;
+        padding: 24px 0px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+
+        .btn__add {
+            width: 147px;
+            height: 48px;
+            border-radius: 8px;
+            line-height: 48px;
+            text-align: center;
+        }
+
+        .btn_cancel {
+            border: 1.5px solid #FF9138;
+            background: #FFF2E7;
+            /* Orange/$-Orange-400 */
+
+            border: 1.5px solid #FF9138;
+            /* down */
+
+            box-shadow: 0px 0px 6px #E7E9F2;
+            font-weight: 700;
+            font-size: 16px;
+            color: #FF9138;
+            margin-right: 32px;
+            cursor: pointer;
+        }
+
+        .btn__add_device {
+            width: 147px;
+            height: 48px;
+            background: #FF9138;
+            box-shadow: 0px 0px 6px #E7E9F2;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+    }
+}

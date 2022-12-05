@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@config": ["src/config"],
+      "@config/*": ["src/config/*"],
+      "@core/*": ["src/core/*"],
+      "@locale/*": ["src/locale/*"],
+      "@modules": ["src/modules"],
+      "@modules/*": ["src/modules/*"],
+      "@layout/*": ["src/layout/*"],
+      "@routers/*": ["src/routers/*"],
+      "@repository/*": ["src/modules/core/repository/*"],
+      "@store/*": ["src/modules/core/store/*"],
+      "@styles/*": ["src/view/styles/*"],
+      "@view/*": ["src/view/*"],
+      "@assets/*": ["src/shared/assets/*"],
+      "@helper/*": ["src/shared/helper/*"],
+      "@hoc/*": ["src/shared/hoc/*"],
+      "@shared/*": ["src/shared/*"],
+      "@hook/*": ["src/shared/hook/*"],
+      "@components/*": ["src/shared/components/*"]
+    }
+  }
+}

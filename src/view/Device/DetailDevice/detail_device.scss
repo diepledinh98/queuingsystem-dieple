@@ -1,0 +1,80 @@
+.detail__device_page {
+    .update__device {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        width: 80px;
+        height: 94px;
+        background: #FFF2E7;
+        /* down */
+        font-weight: 600;
+        font-size: 14px;
+        color: #FF7506;
+        box-shadow: 0px 0px 6px #E7E9F2;
+        border-radius: 8px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .detail__device {
+        margin-top: 50px;
+
+        .title__detail__device {
+            font-weight: 700;
+            font-size: 24px;
+            color: #FF7506;
+            margin-top: 16px;
+            margin-left: 32px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+
+
+        }
+
+        .content__detail__device {
+            width: 1112px;
+            // max-height: 604px;
+            height: 480px;
+            background: #FFFFFF;
+            /* Shadowbox */
+
+            box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
+            border-radius: 16px;
+
+            margin-left: 24px;
+
+            .title_info__device {
+                padding-top: 16px;
+                padding-left: 24px;
+                font-weight: 700;
+                font-size: 20px;
+                color: #FF7506;
+
+
+
+            }
+
+            .text__info_name {
+                font-weight: 600;
+                font-size: 16px;
+                color: #282739;
+            }
+
+            .text__info {
+                font-weight: 400;
+                font-size: 16px;
+                color: #535261;
+            }
+
+
+        }
+    }
+}

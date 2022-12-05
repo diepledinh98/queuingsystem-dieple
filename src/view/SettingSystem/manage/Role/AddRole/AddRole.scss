@@ -1,0 +1,133 @@
+.addrole__page {
+    .title__addrole {
+        margin-top: 50px;
+        font-weight: 700;
+        font-size: 24px;
+        color: #FF7506;
+        margin-bottom: 20px;
+    }
+
+    .main_page {
+        padding-top: 16px;
+        width: 1192px;
+        height: 534px;
+        background: #FFFFFF;
+        /* Shadowbox */
+        padding-left: 24px;
+        box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
+        border-radius: 16px;
+
+        .name__addrole {
+            font-weight: 700;
+            font-size: 20px;
+            color: #FF7506;
+        }
+
+        .content {
+            display: flex;
+            margin-top: 12px;
+
+            .info_role {
+                .add__input {
+                    margin-top: 8px;
+                    margin-bottom: 8px;
+                    width: 560px;
+                    height: 44px;
+                    background: #FFFFFF;
+                    /* Gray/$-gray-100 */
+
+                    border: 1.5px solid #D4D4D7;
+                    border-radius: 8px;
+
+                    &:focus {
+                        box-shadow: none;
+
+                    }
+                }
+
+                .textarea {
+                    margin-top: 8px;
+                    width: 560px;
+                    height: 160px;
+                    padding: 10px 270px 10px 12px;
+                    background: #FFFFFF;
+                    /* Gray/$-gray-100 */
+
+                    border: 1.5px solid #D4D4D7;
+                    border-radius: 8px;
+
+                }
+            }
+
+            .func_role {
+                margin-left: 24px;
+                width: 560px;
+                max-height: 420px;
+                background: #FFF2E7;
+                border-radius: 8px;
+                padding-left: 24px;
+                padding-top: 16px;
+                overflow-y: auto;
+
+                .function {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    margin-bottom: 16px;
+
+                    .title_function {
+                        font-weight: 700;
+                        font-size: 20px;
+                        color: #FF7506;
+
+                    }
+
+                    .checkbox {
+                        font-weight: 500;
+                        font-size: 16px;
+                        color: #535261;
+                    }
+                }
+
+            }
+        }
+    }
+
+    .btn {
+        margin-top: 24px;
+        display: flex;
+        gap: 32px;
+        margin-left: 400px;
+
+        .btn-cancel {
+            line-height: 48px;
+            width: 147px;
+            height: 48px;
+            background: #FFF2E7;
+            /* Orange/$-Orange-400 */
+
+            border: 1.5px solid #FF9138;
+            /* down */
+
+            box-shadow: 0px 0px 6px #E7E9F2;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 16px;
+            color: #FF9138;
+        }
+
+        .btn-add {
+            line-height: 48px;
+            width: 147px;
+            height: 48px;
+            background: #FF9138;
+            /* down */
+
+            box-shadow: 0px 0px 6px #E7E9F2;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 16px;
+            color: #FFFFFF;
+        }
+    }
+}

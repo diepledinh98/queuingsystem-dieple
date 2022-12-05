@@ -1,0 +1,115 @@
+.btn_add_device {
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+    height: 94px;
+    background: #FFF2E7;
+    /* down */
+    margin: 0 10px;
+    box-shadow: 0px 0px 6px #E7E9F2;
+    border-radius: 8px 0px 0px 8px;
+    color: #FF7506;
+    font-weight: 500;
+
+    padding: 0 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.ant-pagination {
+    margin-top: 60px;
+    margin-left: 900px;
+
+    .ant-pagination-prev,
+    .ant-pagination-next {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+        font-weight: 500;
+        background-color: transparent;
+        border: none;
+        color: #7E7D88;
+    }
+
+    .ant-pagination-item {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+        font-weight: 500;
+        background-color: transparent;
+        border: none;
+        color: #7E7D88;
+    }
+
+    .ant-pagination-item-active {
+        background: #FF7506;
+        border-radius: 4px;
+
+
+        color: #FFFFFF;
+        border-color: transparent;
+    }
+}
+
+.device {
+    .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+        width: 300px;
+    }
+
+    .ant-select {
+        width: 95% !important;
+    }
+
+    .ant-select-arrow {
+        color: #FF7506;
+    }
+
+    .sortt {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+
+    .ant-input {
+        width: 300px;
+        height: 44px;
+        background: #FFFFFF;
+        /* Gray/$-gray-100 */
+
+        border: 1.5px solid #D4D4D7;
+        border-radius: 8px;
+        padding: 10px 16px 10px 12px;
+        font-weight: 400;
+        font-size: 14px;
+        color: #A9A9B0;
+
+        &:focus {
+            box-shadow: none;
+            border: 1px solid #D4D4D7 !important;
+            outline: none;
+        }
+
+        &:hover {
+            border: 1px solid #D4D4D7 !important;
+        }
+    }
+
+
+    .ant-btn,
+    button.ant-btn.normal-button,
+    .ant-modal-confirm-btns button.ant-btn,
+    button.ant-btn.cancel-button,
+    .normal-button {
+        min-width: 40px !important;
+        min-height: none !important;
+
+
+        border-top-right-radius: 8px !important;
+        border-bottom-right-radius: 8px !important;
+
+        box-shadow: none !important;
+    }
+}

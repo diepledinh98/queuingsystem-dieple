@@ -1,0 +1,188 @@
+.homepage__item-information {
+    &-card {
+        box-shadow: 2px 2px 15px rgba(70, 64, 67, 0.1);
+        border-radius: 10px;
+        background-color: white;
+        padding: 8px 12px;
+        border-radius: 10px;
+        height: 100%;
+        justify-content: center;
+
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+
+        &-head {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+
+            &-icon {
+                display: flex;
+            }
+
+            &-title {
+                text-align: left;
+                width: 80px;
+                margin-left: 12px;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 18px;
+            }
+        }
+
+        &-body {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 100%;
+
+            &-number {
+                font-weight: 700;
+                font-size: 30px;
+                line-height: 45px;
+            }
+
+            &-percen {
+                display: flex;
+                align-items: center;
+
+
+                span {
+                    font-weight: 400;
+                    font-size: 8px;
+                    line-height: 12px;
+                }
+
+                width: 48px;
+                height: 14.98px;
+                background: rgba(255, 149, 1, 0.15);
+                border-radius: 7.18115px;
+                border: 0;
+                color: #ff9501;
+            }
+        }
+    }
+}
+
+.homepage_left {
+
+    .title {
+        font-weight: 700;
+        font-size: 24px;
+        color: #FF7506;
+        padding: 24px 0px;
+    }
+
+    .list_graph {
+        display: flex;
+        gap: 13px;
+
+        .graph_item {
+            width: 186px;
+            height: 120px;
+            background: #FFFFFF;
+            border-radius: 10px;
+            padding-left: 12px;
+            padding-top: 8px;
+
+
+            .name {
+                margin-top: 10px;
+                display: flex;
+                gap: 12px;
+                font-weight: 500;
+                font-size: 14px;
+                color: #535261;
+
+                .border_icon {
+                    width: 48px;
+                    height: 48px;
+                    background: #6695FB;
+                    opacity: 0.15;
+                    border: 1px solid #DADADA;
+                    border-radius: 50%;
+                    text-align: center;
+                    line-height: 48px;
+                    margin-top: -6px;
+
+                    .icon {
+                        color: red;
+                        font-size: 24px;
+                    }
+                }
+            }
+
+            .number {
+                font-weight: 500;
+                font-size: 30px;
+                color: #535261;
+                margin-top: 12px;
+            }
+        }
+    }
+
+    .chart_info {
+        margin-top: 16px;
+        padding: 24px;
+        width: 791px;
+        height: 484px;
+        background: #FFFFFF;
+        border-radius: 12px;
+
+        .info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+
+            .date {
+                font-weight: 700;
+                font-size: 20px;
+                color: #282739;
+
+                span {
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: #A9A9B0;
+                }
+            }
+
+            .select {
+                margin-top: 8px;
+                font-weight: 600;
+                font-size: 18px;
+                color: #282739;
+                display: flex;
+                gap: 8px;
+
+                .ant-select {
+                    margin-top: -10px;
+                    width: 106px;
+                    height: 42px;
+                    background: #FFFFFF;
+                    /* Gray/$-gray-100 */
+
+                    border: 1.5px solid #D4D4D7;
+                    border-radius: 8px;
+                    font-weight: 400;
+                    font-size: 16px;
+                    color: #7E7D88;
+
+                    .ant-select-selector {
+                        border: none;
+                        background-color: transparent;
+                    }
+
+                    .ant-select-arrow {
+                        color: #FF7506;
+                    }
+                }
+            }
+        }
+
+        .chart {
+            width: 754px;
+            height: 373px;
+        }
+    }
+}
