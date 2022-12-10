@@ -14,6 +14,7 @@ import { FirebaseConfig } from 'src/firebase/configs';
 import { createRoles } from '@modules/rolenew/rolenewStore';
 import { useParams } from 'react-router';
 import { updateRoles } from '@modules/rolenew/rolenewStore';
+import { routerViewRole } from '../router';
 const { TextArea } = Input;
 export interface roleType {
     id?: string
@@ -166,7 +167,7 @@ const UpdateRole = () => {
 
     return (
         <div className="addrole__page">
-            <MainTitleComponent breadcrumbs={routerViewUpdateRole} />
+            <MainTitleComponent breadcrumbs={[routerViewRole, routerViewUpdateRole]} />
             <div className='title__addrole'>{formatMessage('common.roles')}</div>
             <div className='main_page'>
                 <div className='name__addrole'>{formatMessage('common.roleinfo')}</div>

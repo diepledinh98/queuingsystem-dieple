@@ -22,9 +22,13 @@ import { routerUpdateAccount } from '@view/SettingSystem/manage/Account/UpdateAc
 import { routerViewDetailProvideNumber } from '@view/ProvideNumber/DetailProvideNumber/router';
 import { routerViewAddRole } from '@view/SettingSystem/manage/Role/AddRole/router';
 import { routerViewUpdateRole } from '@view/SettingSystem/manage/Role/UpdateRole/router';
+import { routerViewRole } from '@view/SettingSystem/manage/Role/router';
+import { routerViewAccount } from '@view/SettingSystem/manage/Account/router';
+import { routerViewHistory } from '@view/SettingSystem/log/router';
+import { routerNewPassWord } from '@view/Auth/NewPassword/router';
 export const privatePage: IRouter[] = [routerViewRoot, routerHomepage, routerViewProfile, routerViewAddDevice, routerViewDevice, routerViewDetailDevice,
     routerViewService, routerViewAddService, routerViewDetailService, routerViewUpdateService, routerViewProvideNumber, routerViewReport, routerViewSetting, routerViewUpdateDevice,
-    routerViewAddProvideNumber, routerAddAccount, routerUpdateAccount, routerViewDetailProvideNumber, routerViewAddRole, routerViewUpdateRole, routerPageError
+    routerViewAddProvideNumber, routerAddAccount, routerUpdateAccount, routerViewDetailProvideNumber, routerViewAddRole, routerViewUpdateRole, routerPageError, routerViewRole, routerViewAccount, routerViewHistory
 ];
 
-export const publicPage: IRouter[] = [routerLogin, routerForgotPassword];
+export const publicPage: IRouter[] = [routerLogin, routerForgotPassword, routerNewPassWord];

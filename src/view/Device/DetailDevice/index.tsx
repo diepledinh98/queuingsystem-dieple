@@ -7,8 +7,8 @@ import { useParams } from 'react-router';
 import { useAppSelector } from '@shared/hook/reduxhook';
 import { Link } from 'react-router-dom';
 import { useAltaIntl } from '@shared/hook/useTranslate';
-
-import { EditOutlined } from '@ant-design/icons';
+import { routerViewDevice } from '../router';
+import { AiFillEdit } from "react-icons/ai";
 const DetailDevice = () => {
     const { formatMessage } = useAltaIntl();
     const { id } = useParams()
@@ -21,7 +21,7 @@ const DetailDevice = () => {
 
     return (
         <div className='detail__device_page'>
-            <MainTitleComponent breadcrumbs={routerViewDetailDevice} />
+            <MainTitleComponent breadcrumbs={[routerViewDevice, routerViewDetailDevice]} />
             <div className="detail__device">
                 <div className="title__detail__device">
                     {formatMessage('common.deviceql')}
@@ -110,7 +110,7 @@ const DetailDevice = () => {
                         </div>
                     </div>
                     <Link to={`/updatedevice/${device.id}`} className="update__device" >
-                        <EditOutlined />
+                        <AiFillEdit style={{ fontSize: 28 }} />
                         {formatMessage('common.updatedevice')}
                     </Link>
 

@@ -14,7 +14,10 @@ import { useAltaIntl } from '@shared/hook/useTranslate';
 import { fetchHistorys } from '@modules/history/historyStore';
 import { useAppDispatch, useAppSelector } from '@shared/hook/reduxhook';
 import { FirebaseConfig } from 'src/firebase/configs';
+import { routerViewSetting } from '../router';
+import { routerViewHistory } from './router';
 import { onAuthStateChanged } from 'firebase/auth'
+import MainTitleComponent from '@shared/components/MainTitleComponent';
 const auth = FirebaseConfig.getInstance().auth
 const { Search } = Input
 const { RangePicker } = DatePicker
@@ -108,7 +111,7 @@ const UserLog = () => {
 
         return (
             <div className="service__page">
-
+                <MainTitleComponent breadcrumbs={[routerViewSetting, routerViewHistory]} />
                 <div className="main-card" style={{ background: 'none', marginTop: 50 }}>
 
                     <div className="d-flex flex-row justify-content-md-between mb-3 align-items-end">
@@ -143,13 +146,17 @@ const UserLog = () => {
                                 bordered
                                 disableFirstCallApi={true}
                                 pagination={false}
+                                style={{ width: 1050 }}
                             />
-                            <Pagination
-                                total={historys?.length}
-                                current={current}
-                                onChange={setCurrent}
-                                pageSize={pageSize}
-                            />
+                            <div className='paginations'>
+                                <Pagination
+                                    total={historys?.length}
+                                    current={current}
+                                    onChange={setCurrent}
+                                    pageSize={pageSize}
+                                    showSizeChanger={false}
+                                />
+                            </div>
                         </div>
 
                     </div>

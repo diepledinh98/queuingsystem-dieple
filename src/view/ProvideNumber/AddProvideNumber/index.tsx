@@ -19,6 +19,7 @@ import TableComponent from '@shared/components/TableComponent';
 import useTable from '@shared/components/TableComponent/hook';
 import { useAltaIntl } from '@shared/hook/useTranslate';
 import './AddNumber.scss'
+import { routerViewProvideNumber } from '../router';
 import { Select } from 'antd';
 import { IModal } from '../../Homepage/interface';
 import { routerViewAddProvideNumber } from './router';
@@ -30,6 +31,9 @@ import { createProvideNumber } from '@modules/providenumber/numberStore';
 import { fetchServices } from '@modules/service/serviceStore';
 import { fetchAccounts } from '@modules/account/accoutStore';
 import { useAppSelector, useAppDispatch } from '@shared/hook/reduxhook';
+
+import { AiFillCaretDown } from 'react-icons/ai';
+import moment from 'moment';
 interface TypeDevices {
     id?: string
     deviceID?: string
@@ -90,14 +94,9 @@ const ProvideNumber = () => {
     const [sername, setSername] = useState<provideNumberProps>()
     const navigate = useNavigate();
     var presentDate = new Date();
-    var date = presentDate.getDate()
-    var month = presentDate.getMonth()
-    var year = presentDate.getFullYear()
-    var hour = presentDate.getHours()
-    var minutes = presentDate.getMinutes()
-
-    var time = `${hour < 10 ? `0${hour}` : hour}:${minutes < 10 ? `0${minutes}` : minutes} - ${date < 10 ? `0${date}` : date}/${month < 10 ? `0${month}` : month}/${year}`
-    var dated = `${hour < 10 ? `0${hour}` : hour}:${minutes < 10 ? `0${minutes}` : minutes} - ${date < 10 ? `0${date}` : date}/${(month + 1) < 10 ? `0${(month + 1)}` : (month + 1)}/${year + 1}`
+    var date = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+    var time = moment(presentDate).format('HH:mm - DD/MM/YYYY')
+    var dated = moment(date).format('HH:mm - DD/MM/YYYY')
     const services: Array<any> = useAppSelector((state) => {
         return state.service.services
     });
@@ -160,14 +159,14 @@ const ProvideNumber = () => {
 
     return (
         <div className="addprovidenumber__page">
-            <MainTitleComponent breadcrumbs={routerViewAddProvideNumber} />
+            <MainTitleComponent breadcrumbs={[routerViewProvideNumber, routerViewAddProvideNumber]} />
             <div className='title'>{formatMessage('common.qlprovidenumber')}</div>
             <div className='main__page'>
                 <div>
 
                     <div className='title__page'>{formatMessage('common.addnewprovide')}</div>
                     <div className='title__select__service'>{formatMessage('common.dlkhlc')}</div>
-                    <Select defaultValue="Chọn dịch vụ" onChange={handleChange}>
+                    <Select defaultValue="Chọn dịch vụ" onChange={handleChange} suffixIcon={<AiFillCaretDown />}>
                         {services?.map((service, index) => {
                             return (
                                 <Option value={service.id} key={index}>{service.serviceName}</Option>

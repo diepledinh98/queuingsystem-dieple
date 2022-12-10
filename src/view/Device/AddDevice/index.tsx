@@ -11,8 +11,10 @@ import './add_device.scss'
 import { createHistorys } from '@modules/history/historyStore';
 import { onAuthStateChanged } from 'firebase/auth'
 import { createDevice } from '@modules/devicenew/devicenewStore';
-
+import { routerViewDevice } from '../router';
 import { useAltaIntl } from '@shared/hook/useTranslate';
+import { AiFillCaretDown } from "react-icons/ai";
+import moment from 'moment';
 interface deviceProps {
     id?: string
     deviceID: string;
@@ -58,13 +60,7 @@ const AddDevice = () => {
     const [usercurrent, setUsercurrent] = useState<AuthUser | any>(null)
 
     var presentDate = new Date();
-    var date = presentDate.getDate()
-    var month = presentDate.getMonth()
-    var year = presentDate.getFullYear()
-    var hour = presentDate.getHours()
-    var minutes = presentDate.getMinutes()
-    var seconds = presentDate.getSeconds()
-    var time = `${hour < 10 ? `0${hour}` : hour}:${minutes < 10 ? `0${minutes}` : minutes} - ${date < 10 ? `0${date}` : date}/${month < 10 ? `0${month}` : month}/${year}`
+    var time = moment(presentDate).format('HH:mm - DD/MM/YYYY')
 
     const devices: Array<any> | undefined = useAppSelector((state) => state.devicenew.devices);
 
@@ -129,7 +125,7 @@ const AddDevice = () => {
     }
     return (
         <div className='add__device_page'>
-            <MainTitleComponent breadcrumbs={routerViewAddDevice} />
+            <MainTitleComponent breadcrumbs={[routerViewDevice, routerViewAddDevice]} />
             <div className="add_device">
                 <div className="title__add">
                     {formatMessage('common.deviceql')}
@@ -148,7 +144,7 @@ const AddDevice = () => {
                                 <p className="name__add">{formatMessage('common.deviceType')} <span style={{ color: 'red' }}>*</span></p>
 
 
-                                <Select defaultValue="Chọn dịch vụ" onChange={SelectCategory}>
+                                <Select defaultValue="Chọn dịch vụ" onChange={SelectCategory} suffixIcon={<AiFillCaretDown />} >
                                     <Option value='Kiosk' >{formatMessage('common.kiosk')}</Option>
                                     <Option value='displaycounter' >{formatMessage('common.displaycounter')}</Option>
                                 </Select>
@@ -176,7 +172,7 @@ const AddDevice = () => {
                         </Row>
 
                         <Row style={{ marginTop: 16 }}>
-                            <p className="name__add">{formatMessage('common.serviceuse')}<span style={{ color: 'red' }}>*</span></p>
+                            <p className="name__add">{formatMessage('common.serviceuse')} <span style={{ color: 'red' }}>*</span></p>
                             <Select
                                 className="add__service"
                                 mode="multiple"

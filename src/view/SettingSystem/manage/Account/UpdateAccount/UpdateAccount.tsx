@@ -12,7 +12,8 @@ import { useParams } from 'react-router';
 import { updateAccount } from '@modules/account/accoutStore';
 import { update } from 'lodash';
 import { useAltaIntl } from '@shared/hook/useTranslate';
-
+import { AiFillCaretDown } from 'react-icons/ai';
+import { routerViewAccount } from '../router';
 const { Option } = Select;
 const db = FirebaseConfig.getInstance().fbDB
 export interface roleType {
@@ -116,7 +117,7 @@ const UpdateAccount = () => {
     }
     return (
         <div className='add__device_page'>
-            <MainTitleComponent breadcrumbs={routerUpdateAccount} />
+            <MainTitleComponent breadcrumbs={[routerViewAccount, routerUpdateAccount]} />
             <div className="add_device">
                 <div className="title__add">
                     {formatMessage('common.qltaikhoan')}
@@ -159,7 +160,7 @@ const UpdateAccount = () => {
                         <Row style={{ marginTop: 16 }}>
                             <Col span={12}>
                                 <p className="name__add">{formatMessage('common.role')} <span style={{ color: 'red' }} >*</span></p>
-                                <Select defaultValue={account.role.name} onChange={handleChange}>
+                                <Select suffixIcon={<AiFillCaretDown />} defaultValue={account.role.name} onChange={handleChange}>
                                     {roles.map((role, index) => {
                                         return (
                                             <Option value={role.id} key={index}>{role.name}</Option>
@@ -169,7 +170,7 @@ const UpdateAccount = () => {
                             </Col>
                             <Col span={12}>
                                 <p className="name__add">{formatMessage('common.tr')}  <span style={{ color: 'red' }}>*</span></p>
-                                <Select defaultValue={account.status} onChange={handleChangeStatus}>
+                                <Select suffixIcon={<AiFillCaretDown />} defaultValue={account.status} onChange={handleChangeStatus}>
                                     <Option value={false}>{formatMessage('common.stopaction')}</Option>
                                     <Option value={true}>{formatMessage('common.onaction')}</Option>
                                 </Select>

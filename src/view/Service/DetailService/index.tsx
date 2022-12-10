@@ -20,11 +20,12 @@ import useTable from '@shared/components/TableComponent/hook';
 import { useAltaIntl } from '@shared/hook/useTranslate';
 import { Col, Row, Input, Pagination, Select, } from 'antd';
 import './style.scss'
-
+import { routerViewService } from '../router';
 import { routerViewDetailService } from './router';
 import { useParams } from 'react-router';
 import { useAppSelector } from '@shared/hook/reduxhook';
 import { EditOutlined, RollbackOutlined } from '@ant-design/icons';
+import { AiFillCaretDown } from 'react-icons/ai';
 const { Search } = Input;
 const { Option, OptGroup } = Select;
 const { TextArea } = Input;
@@ -146,7 +147,7 @@ const DetailDervice = () => {
 
     return (
         <div className="detailservice__page">
-            <MainTitleComponent breadcrumbs={routerViewDetailService} />
+            <MainTitleComponent breadcrumbs={[routerViewService, routerViewDetailService]} />
             <div className='title__detail'>
                 Quản lý dịch vụ
             </div>
@@ -227,7 +228,7 @@ const DetailDervice = () => {
                             <div className="d-flex flex-row " style={{ gap: 10 }}>
                                 <div className='sortt'>
                                     <label>{formatMessage('common.titleaction')}</label>
-                                    <Select defaultValue={formatMessage('common.all')} className="margin-select" onChange={handleChangeStatus}>
+                                    <Select suffixIcon={<AiFillCaretDown />} defaultValue={formatMessage('common.all')} className="margin-select" onChange={handleChangeStatus}>
                                         <Option value="All">{formatMessage('common.all')}</Option>
                                         {NameStatus.map((item, index) => {
                                             return (

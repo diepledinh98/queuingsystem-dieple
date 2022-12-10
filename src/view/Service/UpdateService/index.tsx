@@ -28,9 +28,10 @@ import { FirebaseConfig } from 'src/firebase/configs';
 import { updateService } from '@modules/service/serviceStore';
 import { useAppDispatch } from '@shared/hook/reduxhook';
 import { doc, updateDoc } from "firebase/firestore";
-
+import { routerViewService } from '../router';
 import { createHistorys } from '@modules/history/historyStore';
 import { onAuthStateChanged } from 'firebase/auth'
+import moment from 'moment';
 interface historyProps {
     id?: string
     username: string
@@ -83,13 +84,7 @@ const UpdateService = () => {
 
 
     var presentDate = new Date();
-    var date = presentDate.getDate()
-    var month = presentDate.getMonth()
-    var year = presentDate.getFullYear()
-    var hour = presentDate.getHours()
-    var minutes = presentDate.getMinutes()
-    var seconds = presentDate.getSeconds()
-    var time = `${hour < 10 ? `0${hour}` : hour}:${minutes < 10 ? `0${minutes}` : minutes} - ${date < 10 ? `0${date}` : date}/${month < 10 ? `0${month}` : month}/${year}`
+    var time = moment(presentDate).format('HH:mm - DD/MM/YYYY')
 
     useEffect(() => {
         if (service.Growauto !== 0) {
@@ -110,7 +105,7 @@ const UpdateService = () => {
 
         var check: boolean = false
         for (var index: number = 0; index < services.length; index = index + 1) {
-            if (services[index].serviceID === serviceID) {
+            if (serviceID !== service.serviceID && services[index].serviceID === serviceID) {
                 check = true
             }
         }
@@ -153,7 +148,7 @@ const UpdateService = () => {
     }
     return (
         <div className="addservice__page">
-            <MainTitleComponent breadcrumbs={routerViewUpdateService} />
+            <MainTitleComponent breadcrumbs={[routerViewService, routerViewUpdateService]} />
             <div className='title__addservice'>
                 Quản lý dịch vụ
                 <div className='box__addservice'>

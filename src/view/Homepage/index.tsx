@@ -15,16 +15,18 @@ import { useAppDispatch, useAppSelector } from '@shared/hook/reduxhook';
 import { fetchProvideNumber } from '@modules/providenumber/numberStore';
 import { fetchAccounts } from '@modules/account/accoutStore';
 import { fetchRoles } from '@modules/rolenew/rolenewStore';
+import { AiFillCaretDown } from 'react-icons/ai';
+import { values } from 'lodash';
 const { Option } = Select;
 const Homepage = () => {
   const { formatMessage } = useAltaIntl();
-  const [data, setData] = useState([]);
   const dispatch = useAppDispatch()
   const devices = useAppSelector((state) => state.devicenew.devices)
   const services = useAppSelector((state) => state.service.services)
   const providenumbers = useAppSelector((state) => state.providenumber.Number)
+  const [selectChart, setSelectChart] = useState('week')
   useEffect(() => {
-    asyncFetch();
+
     dispatch(fetchRoles())
     dispatch(fetchDevicesNew())
     dispatch(fetchServices())
@@ -32,7 +34,9 @@ const Homepage = () => {
     dispatch(fetchAccounts())
   }, [dispatch]);
 
-
+  const handleChart = (values: string) => {
+    setSelectChart(values)
+  }
   // resolve device
   var activeDevice: number = 0
   var notActiveDevice: number = 0
@@ -59,18 +63,134 @@ const Homepage = () => {
     }
   }
 
-  const asyncFetch = () => {
-    fetch('https://gw.alipayobjects.com/os/bmw-prod/360c3eae-0c73-46f0-a982-4746a6095010.json')
-      .then((response) => response.json())
-      .then((json) => setData(json))
-      .catch((error) => {
-        console.log('fetch data failed', error);
-      });
-  };
+  //data days 
+  var dataDays: { day: string; val: number; }[]
+  dataDays = [
+    { day: '01', val: 0 },
+    { day: '02', val: 0 },
+    { day: '03', val: 0 },
+    { day: '04', val: 0 },
+    { day: '05', val: 0 },
+    { day: '06', val: 0 },
+    { day: '07', val: 0 },
+    { day: '08', val: 0 },
+    { day: '09', val: 0 },
+    { day: '10', val: 0 },
+    { day: '11', val: 0 },
+    { day: '12', val: 0 },
+    { day: '13', val: 0 },
+    { day: '14', val: 0 },
+    { day: '15', val: 0 },
+    { day: '16', val: 0 },
+    { day: '17', val: 0 },
+    { day: '18', val: 0 },
+    { day: '19', val: 0 },
+    { day: '20', val: 0 },
+    { day: '21', val: 0 },
+    { day: '22', val: 0 },
+    { day: '23', val: 0 },
+    { day: '24', val: 0 },
+    { day: '25', val: 0 },
+    { day: '26', val: 0 },
+    { day: '27', val: 0 },
+    { day: '28', val: 0 },
+    { day: '29', val: 0 },
+    { day: '30', val: 0 },
+    { day: '31', val: 0 },
+  ]
+
+  for (var i: number = 0; i < dataDays.length; i = i + 1) {
+    for (var j: number = 0; j < providenumbers.length; j = j + 1) {
+      var dayset = Number(dataDays[i].day)
+      var daynum = Number(providenumbers[j].timeprovide.slice(8, 10))
+      if (Number(providenumbers[j].timeprovide.slice(11, 13)) === 12) {
+        if (dayset === daynum) {
+          dataDays[i].val = dataDays[i].val + 1
+        }
+      }
+    }
+  }
+
+  // data chart week
+  var dataWeek: { week: string; val: number; }[]
+  dataWeek = [
+    { week: 'Tuần 1', val: 0 },
+    { week: 'Tuần 2', val: 0 },
+    { week: 'Tuần 3', val: 0 },
+    { week: 'Tuần 4', val: 0 },
+  ]
+
+  for (var index: number = 0; index < providenumbers.length; index = index + 1) {
+    var month = Number(providenumbers[index].timeprovide.slice(11, 13));
+    var day = Number(providenumbers[index].timeprovide.slice(8, 10))
+
+    if (month === 11) {
+      if (day >= 1 && day <= 8) { // tuan 1
+        dataWeek[0].val = dataWeek[0].val + 1
+      }
+      if (day >= 9 && day <= 16) { // tuan 2
+        dataWeek[1].val = dataWeek[1].val + 1
+      }
+      if (day >= 17 && day <= 24) {
+        dataWeek[2].val = dataWeek[2].val + 1
+      }
+      if (day >= 25 && day <= 31) {
+        dataWeek[3].val = dataWeek[3].val + 1
+      }
+    }
+  }
+
+  //data month 
+  var dataMonths: { month: string; val: number; }[]
+  dataMonths = [
+    { month: '1', val: 0 },
+    { month: '2', val: 0 },
+    { month: '2', val: 0 },
+    { month: '3', val: 0 },
+    { month: '4', val: 0 },
+    { month: '5', val: 0 },
+    { month: '6', val: 0 },
+    { month: '7', val: 0 },
+    { month: '8', val: 0 },
+    { month: '9', val: 0 },
+    { month: '10', val: 0 },
+    { month: '11', val: 0 },
+    { month: '12', val: 0 },
+
+  ]
+
+
+  for (var i: number = 0; i < dataMonths.length; i = i + 1) {
+    for (var j: number = 0; j < providenumbers.length; j = j + 1) {
+      var monthset = Number(dataMonths[i].month)
+      var monthnum = Number(providenumbers[j].timeprovide.slice(11, 13))
+      if (monthset === monthnum) {
+        dataMonths[i].val = dataMonths[i].val + 1
+      }
+    }
+  }
+
+  var dataset: any[] = []
+  var xfield: string = 'week'
+  if (selectChart === 'day') {
+    dataset = dataDays
+    xfield = 'day'
+  }
+  else if (selectChart === 'month') {
+    dataset = dataMonths
+    xfield = 'month'
+  }
+  else {
+    dataset = dataWeek
+    xfield = 'week'
+  }
+
+
   const config = {
-    data,
-    xField: 'timePeriod',
-    yField: 'value',
+    dataset,
+    xField: xfield,
+    yField: 'val',
+    smooth: true,
     xAxis: {
       range: [0, 1],
     },
@@ -91,22 +211,22 @@ const Homepage = () => {
             <div className='date'>
               <br />
               <span>
-                {formatMessage('common.thangchart')} 11/2021
+                {formatMessage('common.thangchart')} 11/2022
               </span>
             </div>
             <div className='select'>
 
-              <Select defaultValue="Ngày">
-                <Option> {formatMessage('common.day')}</Option>
-                <Option> {formatMessage('common.week')}</Option>
-                <Option> {formatMessage('common.thangchart')}</Option>
+              <Select defaultValue={selectChart} suffixIcon={<AiFillCaretDown />} onChange={handleChart}>
+                <Option value='day'> {formatMessage('common.day')}</Option>
+                <Option value='week'> {formatMessage('common.week')}</Option>
+                <Option value='month'> {formatMessage('common.thangchart')}</Option>
 
               </Select>
             </div>
           </div>
           <div className='chart'>
 
-            <Area {...config} />
+            <Area data={dataset} {...config} />
           </div>
         </div>
       </div>

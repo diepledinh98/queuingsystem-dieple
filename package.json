@@ -2,7 +2,7 @@
   "name": "template-alta-cms",
   "version": "1.0.0",
   "description": "a product of Alta's developer team",
-  "homepage": "https://diepledinh98.github.io/system_queuing_final",
+  "homepage": "https://diepledinh98.github.io/queuingsystem-dieple",
   "main": "./src/view/index.tsx",
   "scripts": {
     "dev": "npm run && webpack-dev-server --mode development",

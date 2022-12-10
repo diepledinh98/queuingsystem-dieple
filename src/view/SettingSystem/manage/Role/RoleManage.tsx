@@ -21,6 +21,7 @@ import { Link } from 'react-router-dom';
 import { fetchAccounts } from '@modules/account/accoutStore';
 import { FirebaseConfig } from 'src/firebase/configs';
 import { onAuthStateChanged } from 'firebase/auth'
+import { routerViewRole } from './router';
 const auth = FirebaseConfig.getInstance().auth
 const { Search } = Input;
 interface DataType {
@@ -173,7 +174,7 @@ const RoleManage = () => {
     if (role?.permitViewRole !== false) {
         return (
             <div className="role__page">
-                <MainTitleComponent breadcrumbs={routerViewSetting?.routes} />
+                <MainTitleComponent breadcrumbs={[routerViewSetting, routerViewRole]} />
                 <div className="main-card" style={{ background: 'none', marginTop: 50 }}>
 
                     <div className="d-flex flex-row justify-content-md-between mb-3 align-items-end">
@@ -200,13 +201,16 @@ const RoleManage = () => {
                                 bordered
                                 disableFirstCallApi={true}
                                 pagination={false}
+                                style={{ width: 1050 }}
                             />
-                            <Pagination
-                                total={data?.length}
-                                current={current}
-                                onChange={setCurrent}
-                                pageSize={pageSize}
-                            />
+                            <div className='paginations'>
+                                <Pagination
+                                    total={data?.length}
+                                    current={current}
+                                    onChange={setCurrent}
+                                    pageSize={pageSize}
+                                />
+                            </div>
                         </div>
                         <div className='btn_add_device' onClick={linkAddRole}>
 

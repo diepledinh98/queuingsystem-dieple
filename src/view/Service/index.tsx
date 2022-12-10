@@ -25,6 +25,8 @@ import { fetchServices } from '@modules/service/serviceStore';
 import { IconAddDevice } from '@shared/components/iconsComponent';
 import { FirebaseConfig } from 'src/firebase/configs';
 import { onAuthStateChanged } from '@firebase/auth';
+import RangePickerComponent from '@shared/components/RangePickerComponent';
+import { AiFillCaretDown } from "react-icons/ai";
 const { Search } = Input;
 const { Option, OptGroup } = Select;
 interface AuthUser {
@@ -200,7 +202,7 @@ const Service = () => {
                         <div className="d-flex flex-row " style={{ gap: 10 }}>
                             <div className='sortt'>
                                 <label>{formatMessage('common.titleaction')}</label>
-                                <Select defaultValue={formatMessage('common.all')} className="margin-select" onChange={handleChangeStatus}>
+                                <Select suffixIcon={<AiFillCaretDown />} defaultValue={formatMessage('common.all')} className="margin-select" onChange={handleChangeStatus}>
                                     <Option value="All">{formatMessage('common.all')}</Option>
                                     <Option value="active">{formatMessage('common.onaction')}</Option>
                                     <Option value="notActive">{formatMessage('common.stopaction')}</Option>
@@ -210,11 +212,12 @@ const Service = () => {
 
                             <div className='select__time'>
                                 <p>{formatMessage('common.selecttime')}</p>
-                                <Space direction="vertical" className='time'>
+                                {/* <Space direction="vertical" className='time'>
                                     <DatePicker picker="week" />
 
                                     <DatePicker picker="week" />
-                                </Space>
+                                </Space> */}
+                                <RangePickerComponent />
 
                             </div>
                         </div>
@@ -233,6 +236,7 @@ const Service = () => {
 
                             <TableComponent
                                 // apiServices={}
+                                style={{ width: 1050 }}
                                 defaultOption={filter}
                                 translateFirstKey="homepage"
                                 rowKey={res => res[idChooses]}
@@ -244,12 +248,15 @@ const Service = () => {
                                 disableFirstCallApi={true}
                                 pagination={false}
                             />
-                            <Pagination
-                                total={services?.length}
-                                current={current}
-                                onChange={setCurrent}
-                                pageSize={pageSize}
-                            />
+                            <div className='paginations'>
+                                <Pagination
+                                    total={services?.length}
+                                    current={current}
+                                    onChange={setCurrent}
+                                    pageSize={pageSize}
+                                    showSizeChanger={false}
+                                />
+                            </div>
                         </div>
                         <div className='btn_add_device' onClick={linkAddService}>
                             <IconAddDevice />

@@ -29,6 +29,7 @@ import { getProvideNumber } from '@modules/providenumber/respository';
 import moment from 'moment';
 import { FirebaseConfig } from 'src/firebase/configs';
 import { onAuthStateChanged } from 'firebase/auth'
+import { AiOutlineCloudDownload } from 'react-icons/ai';
 const { RangePicker } = DatePicker
 const auth = FirebaseConfig.getInstance().auth
 interface DataType {
@@ -201,7 +202,7 @@ const Report = () => {
 
                             <TableComponent
                                 // apiServices={}
-
+                                style={{ width: 1050 }}
                                 translateFirstKey="homepage"
                                 rowKey={res => res[idChooses]}
                                 register={table}
@@ -212,14 +213,17 @@ const Report = () => {
                                 disableFirstCallApi={true}
                                 pagination={false}
                             />
-                            <Pagination
-                                total={data?.length}
-                                current={current}
-                                onChange={setCurrent}
-                                pageSize={pageSize}
-                            />
+                            <div className='paginations'>
+                                <Pagination
+                                    total={data?.length}
+                                    current={current}
+                                    onChange={setCurrent}
+                                    pageSize={pageSize}
+                                />
+                            </div>
                         </div>
                         <div className='btn_add_device' onClick={ExportCSV}>
+                            <AiOutlineCloudDownload style={{ fontSize: 28 }} />
                             {formatMessage('common.download')}
 
                         </div>

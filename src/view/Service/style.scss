@@ -19,7 +19,24 @@ p {
     flex-direction: column;
 }
 
+.ant-select-arrow {
+    color: #FF7506;
+    font-size: 3rem;
+}
+
+span.ant-select-arrow {
+    width: 20px;
+}
+
 .service__page {
+    .ant-select-arrow {
+        color: #FF7506;
+        font-size: 3rem;
+    }
+
+    span.ant-select-arrow {
+        width: 20px;
+    }
 
     .ant-btn,
     button.ant-btn.normal-button,

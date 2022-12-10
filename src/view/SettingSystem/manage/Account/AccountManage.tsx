@@ -26,6 +26,8 @@ import { fetchAccounts } from '@modules/account/accoutStore';
 import { IconAddDevice } from '@shared/components/iconsComponent';
 import { FirebaseConfig } from 'src/firebase/configs';
 import { onAuthStateChanged } from 'firebase/auth'
+import { AiFillCaretDown } from 'react-icons/ai';
+import { routerViewAccount } from './router';
 const { Search } = Input;
 const { Option, OptGroup } = Select;
 const auth = FirebaseConfig.getInstance().auth
@@ -116,8 +118,7 @@ const AccountManager = () => {
             dataIndex: '    ',
             render: (status: string) => (
                 <>
-                    <CircleLabel text={formatMessage('common.statusActive')} colorCode="green" /> :
-
+                    <CircleLabel text={formatMessage('common.statusActive')} colorCode="green" />
                 </>
             )
         },
@@ -178,14 +179,14 @@ const AccountManager = () => {
     if (role?.permitViewAccount !== false) {
         return (
             <div className="service__page">
-                <MainTitleComponent breadcrumbs={routerViewSetting} />
+                <MainTitleComponent breadcrumbs={[routerViewSetting, routerViewAccount]} />
                 <div className="main-card" style={{ background: 'none', marginTop: 50 }}>
 
                     <div className="d-flex flex-row justify-content-md-between mb-3 align-items-end">
                         <div className="d-flex flex-row " style={{ gap: 10 }}>
                             <div className='sortt'>
                                 <label>{formatMessage('common.role.namerole')}</label>
-                                <Select defaultValue={formatMessage('common.all')} className="margin-select" onChange={handleRole}>
+                                <Select suffixIcon={<AiFillCaretDown />} defaultValue={formatMessage('common.all')} className="margin-select" onChange={handleRole}>
                                     <Option value="All">{formatMessage('common.all')}</Option>
                                     {roles.map((role, index) => {
                                         return (
@@ -215,13 +216,16 @@ const AccountManager = () => {
                                 bordered
                                 disableFirstCallApi={true}
                                 pagination={false}
+                                style={{ width: 1050 }}
                             />
-                            <Pagination
-                                total={data?.length}
-                                current={current}
-                                onChange={setCurrent}
-                                pageSize={pageSize}
-                            />
+                            <div className='paginations'>
+                                <Pagination
+                                    total={data?.length}
+                                    current={current}
+                                    onChange={setCurrent}
+                                    pageSize={pageSize}
+                                />
+                            </div>
                         </div>
                         <div className='btn_add_device' onClick={linkAddAccount}>
                             <IconAddDevice />

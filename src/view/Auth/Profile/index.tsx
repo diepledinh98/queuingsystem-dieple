@@ -21,53 +21,46 @@ import ModalChangePassWord from './components/ModalChangePassWord';
 import { routerViewProfile } from './router';
 import { collection, DocumentData, onSnapshot, QuerySnapshot } from 'firebase/firestore';
 import { FirebaseConfig } from "../../../firebase/configs"
-
+import { useAppSelector } from '@shared/hook/reduxhook';
+import { onAuthStateChanged } from 'firebase/auth';
+interface RoleType {
+  name: string
+}
+interface UserType {
+  id?: string
+  email?: string
+  name?: string
+  phone?: string
+  role?: RoleType
+  username?: string
+}
 const UserProfile = () => {
+  const auth = FirebaseConfig.getInstance().auth
   const db = FirebaseConfig.getInstance().fbDB;
   const history = useNavigate();
   const [form] = Form.useForm();
   const { formatMessage } = useAltaIntl();
   const [isVisible, setIsVisible] = useState(false);
   const [isDisableForm, setIsDisableForm] = useState(true);
-  const user = useSelector((state: RootState) => state.profile.user);
   const updateAccounts = useSingleAsync(authenticationPresenter.updateProfile);
-  console.log(user);
-
+  const users: Array<any> | any = useAppSelector((state) => state.account.accounts);
+  const [usercurrent, setUsercurrent] = useState<UserType | any>(null)
   const showModal = () => {
     setIsVisible(true);
   };
-  interface UserType {
-    id?: string
-    email?: string
-    name?: string
-    phone?: string
-    role?: string
-    username?: string
-  }
+
   const [userprofile, setUserprofile] = useState<UserType[]>([])
 
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   if (user != null) {
-  //     setIsDisableForm(true);
-  //     form.setFieldsValue(user);
-  //   }
-  // }, [form, user]);
+  const user = users?.find((value) => value?.id == usercurrent?.uid);
+  console.log(user);
 
   useEffect(
-    () =>
-      onSnapshot(collection(db, 'users'), (snapshot:
-        QuerySnapshot<DocumentData>) => {
-        setUserprofile(
-          snapshot.docs.map((doc) => {
-            return {
-              id: doc.id,
-              ...doc.data(),
-            }
-          })
-        )
-      }),
-    []
+    () => {
+      onAuthStateChanged(auth, (curr: any) => {
+        setUsercurrent(curr)
+      })
+    }, []
   )
 
   const arrayAction: IArrayAction[] = [
@@ -110,7 +103,7 @@ const UserProfile = () => {
       });
     }
   };
-  console.log(userprofile);
+
 
   return (
     <div>
@@ -133,24 +126,24 @@ const UserProfile = () => {
               <div className="profile-form__box" style={{ display: 'flex' }}>
                 <div className="profile-avatar">
                   <AvatarUser disabled={isDisableForm} chooseFile={chooseFile} />
-                  <p>{userprofile[0]?.username}</p>
+                  <p>{user?.username}</p>
                 </div>
 
                 <div className='content__info-information'>
                   <Row>
                     <Col span={12}>
                       <p>Tên người dùng</p>
-                      <Input className='info__input' value={userprofile[0]?.username} />
+                      <Input className='info__input' value={user?.username} />
                     </Col>
                     <Col span={12}>
                       <p>Tên đăng nhập</p>
-                      <Input className='info__input' value={userprofile[0]?.email} />
+                      <Input className='info__input' value={user?.email} />
                     </Col>
                   </Row>
                   <Row>
                     <Col span={12}>
                       <p>Số điện thoại</p>
-                      <Input className='info__input' value={userprofile[0]?.phone} />
+                      <Input className='info__input' value={user?.phone} />
                     </Col>
                     <Col span={12}>
                       <p>Mật khẩu</p>
@@ -160,11 +153,11 @@ const UserProfile = () => {
                   <Row>
                     <Col span={12}>
                       <p>Email</p>
-                      <Input className='info__input' value={userprofile[0]?.email} />
+                      <Input className='info__input' value={user?.email} />
                     </Col>
                     <Col span={12}>
                       <p>Vai trò:</p>
-                      <Input className='info__input' value={userprofile[0]?.role} />
+                      <Input className='info__input' value={user?.role.name} />
                     </Col>
                   </Row>
 
@@ -203,3 +196,7 @@ const UserProfile = () => {
 };
 
 export default React.memo(UserProfile);
+function setUsercurrent(curr: any) {
+  throw new Error('Function not implemented.');
+}
+

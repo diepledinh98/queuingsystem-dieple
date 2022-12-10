@@ -12,6 +12,8 @@ import { useAppDispatch, useAppSelector } from '@shared/hook/reduxhook';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { formatMessage } from '@formatjs/intl';
 import { useAltaIntl } from '@shared/hook/useTranslate';
+import { AiFillCaretDown } from 'react-icons/ai';
+import { routerViewAccount } from '../router';
 const { Option } = Select;
 const db = FirebaseConfig.getInstance().fbDB
 const auth = FirebaseConfig.getInstance().auth
@@ -121,7 +123,7 @@ const AddAccount = () => {
     }
     return (
         <div className='add__device_page'>
-            <MainTitleComponent breadcrumbs={routerAddAccount} />
+            <MainTitleComponent breadcrumbs={[routerViewAccount, routerAddAccount]} />
             <div className="add_device">
                 <div className="title__add">
                     {formatMessage('common.qltaikhoan')}
@@ -164,7 +166,7 @@ const AddAccount = () => {
                         <Row style={{ marginTop: 16 }}>
                             <Col span={12}>
                                 <p className="name__add">{formatMessage('common.role')} <span style={{ color: 'red' }} >*</span></p>
-                                <Select defaultValue="Chọn vai trò" onChange={handleChange}>
+                                <Select suffixIcon={<AiFillCaretDown />} defaultValue="Chọn vai trò" onChange={handleChange}>
                                     {roles.map((role, index) => {
                                         return (
                                             <Option value={role.id} key={index}>{role.name}</Option>
@@ -175,7 +177,7 @@ const AddAccount = () => {
                             </Col>
                             <Col span={12}>
                                 <p className="name__add">{formatMessage('common.tr')} <span style={{ color: 'red' }}>*</span></p>
-                                <Select defaultValue="Chọn tình trạng" onChange={handleChangeStatus}>
+                                <Select suffixIcon={<AiFillCaretDown />} defaultValue="Chọn tình trạng" onChange={handleChangeStatus}>
 
                                     <Option value={false}>{formatMessage('common.stopaction')}</Option>
                                     <Option value={true}>{formatMessage('common.onaction')}</Option>

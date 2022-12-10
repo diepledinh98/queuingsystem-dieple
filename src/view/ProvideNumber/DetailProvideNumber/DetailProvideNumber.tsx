@@ -6,7 +6,9 @@ import { useParams } from "react-router";
 import { useAppSelector } from "@shared/hook/reduxhook";
 import { Link } from "react-router-dom";
 import CircleLabel from '@shared/components/CircleLabel';
+import { routerViewProvideNumber } from "../router";
 import { useAltaIntl } from '@shared/hook/useTranslate';
+import { RollbackOutlined } from "@ant-design/icons";
 const DetailProvideNumber = () => {
     const { formatMessage } = useAltaIntl();
     const { id } = useParams()
@@ -17,7 +19,7 @@ const DetailProvideNumber = () => {
     const provide = providenumber?.find((value) => value.id == id);
     return (
         <div className='detail__device_page'>
-            <MainTitleComponent breadcrumbs={routerViewDetailProvideNumber} />
+            <MainTitleComponent breadcrumbs={[routerViewProvideNumber, routerViewDetailProvideNumber]} />
             <div className="detail__device">
                 <div className="title__detail__device">
                     Quản lý cấp số
@@ -113,7 +115,7 @@ const DetailProvideNumber = () => {
                         </div>
                     </div>
                     <Link to={`/provide`} className="update__device" >
-
+                        <RollbackOutlined style={{ fontSize: 25 }} />
                         Quay lại
                     </Link>
 

@@ -12,6 +12,9 @@ import { useNavigate } from 'react-router';
 import { createHistorys } from '@modules/history/historyStore';
 import { onAuthStateChanged } from 'firebase/auth'
 import { useAltaIntl } from '@shared/hook/useTranslate';
+import { AiFillCaretDown } from 'react-icons/ai';
+import { routerViewDevice } from '../router';
+import moment from 'moment';
 interface deviceProps {
     id?: string
     deviceID: string;
@@ -61,13 +64,7 @@ const UpdateDevice = () => {
     const [usercurrent, setUsercurrent] = useState<AuthUser | any>(null)
 
     var presentDate = new Date();
-    var date = presentDate.getDate()
-    var month = presentDate.getMonth()
-    var year = presentDate.getFullYear()
-    var hour = presentDate.getHours()
-    var minutes = presentDate.getMinutes()
-    var seconds = presentDate.getSeconds()
-    var time = `${hour < 10 ? `0${hour}` : hour}:${minutes < 10 ? `0${minutes}` : minutes} - ${date < 10 ? `0${date}` : date}/${month < 10 ? `0${month}` : month}/${year}`
+    var time = moment(presentDate).format('HH:mm - DD/MM/YYYY')
     useEffect(() => {
         onAuthStateChanged(auth, (curr: any) => {
             setUsercurrent(curr)
@@ -109,7 +106,7 @@ const UpdateDevice = () => {
 
     return (
         <div className='update__device_page'>
-            <MainTitleComponent breadcrumbs={routerViewUpdateDevice} />
+            <MainTitleComponent breadcrumbs={[routerViewDevice, routerViewUpdateDevice]} />
             <div className="add_device">
                 <div className="title__add">
                     {formatMessage('common.deviceql')}
@@ -127,7 +124,7 @@ const UpdateDevice = () => {
                             <Col span={12}>
                                 <p className="name__add">{formatMessage('common.deviceType')} <span style={{ color: 'red' }}>*</span></p>
 
-                                <Select defaultValue={device.devicecategory} onChange={SelectCategory}>
+                                <Select suffixIcon={<AiFillCaretDown />} defaultValue={device.devicecategory} onChange={SelectCategory}>
                                     <Option value='Kiosk' >{formatMessage('common.kiosk')}</Option>
                                     <Option value='displaycounter' >{formatMessage('common.displaycounter')}</Option>
                                 </Select>
@@ -157,6 +154,7 @@ const UpdateDevice = () => {
                         <Row style={{ marginTop: 16 }}>
                             <p className="name__add">{formatMessage('common.serviceuse')} <span style={{ color: 'red' }}>*</span></p>
                             <Select
+
                                 className="add__service"
                                 mode="multiple"
                                 placeholder="Nhập dịch vụ sử dụng"

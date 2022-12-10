@@ -5,6 +5,6 @@ export const routerAddAccount: IRouter = {
   path: '/addaccount',
   loader: import('./AddCount'),
   exact: true,
-  name: 'common.homepage',
+  name: 'common.addaccount',
 
 };

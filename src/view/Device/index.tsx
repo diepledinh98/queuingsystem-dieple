@@ -1,6 +1,6 @@
 import './style.scss';
 
-import { Pagination, Space } from 'antd';
+import { Button, Pagination, Space } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 import React, { Key, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
@@ -23,6 +23,7 @@ import { Select, Input } from 'antd';
 import { FirebaseConfig } from 'src/firebase/configs';
 import { onAuthStateChanged } from 'firebase/auth'
 import { format } from 'path';
+import { AiFillCaretDown } from "react-icons/ai";
 const { Search } = Input;
 const { Option, OptGroup } = Select;
 
@@ -290,7 +291,7 @@ const Device = () => {
                                 )} */}
                             <div className='sortt'>
                                 <label>{formatMessage('common.titleaction')}</label>
-                                <Select defaultValue={formatMessage('common.all')} style={{ width: 200 }} className="margin-select" onChange={handleChangeStatus}>
+                                <Select suffixIcon={<AiFillCaretDown />} defaultValue={formatMessage('common.all')} style={{ width: 200 }} className="margin-select" onChange={handleChangeStatus}>
                                     <Option value="All">{formatMessage('common.all')}</Option>
                                     <Option value="active">{formatMessage('common.onaction')}</Option>
                                     <Option value="notActive">{formatMessage('common.stopaction')}</Option>
@@ -299,14 +300,14 @@ const Device = () => {
 
                             <div className='sortt'>
                                 <label>{formatMessage('common.titlteconnect')}</label>
-                                <Select defaultValue={formatMessage('common.all')} style={{ width: 200 }} className="margin-select" onChange={handleChangeConnect}>
+                                <Select suffixIcon={<AiFillCaretDown />} defaultValue={formatMessage('common.all')} style={{ width: 200 }} className="margin-select" onChange={handleChangeConnect}>
                                     <Option value="All">{formatMessage('common.all')}</Option>
                                     <Option value="connect">{formatMessage('common.onconnect')}</Option>
                                     <Option value="notConnect">{formatMessage('common.stopconnect')}</Option>
                                 </Select>
                             </div>
                         </div>
-                        <div className="d-flex flex-column ">
+                        <div className="d-flex flex-column " style={{ marginRight: 35 }}>
                             <div className="label-select">{formatMessage('common.keyword')}</div>
                             {/* <SearchComponent
                                     onSearch={handleSearch}
@@ -316,7 +317,7 @@ const Device = () => {
                             <Search placeholder="Nhập tên thiết bị" onSearch={onSearch} />
                         </div>
                     </div>
-                    <div className='d-flex' >
+                    <div className='d-flex' style={{ gap: 10 }} >
                         <div>
 
                             <TableComponent
@@ -328,20 +329,23 @@ const Device = () => {
                                 columns={columns}
                                 // onRowSelect={setSelectedRowKeys}
                                 dataSource={getData(current, pageSize)}
-
+                                style={{ width: 1050 }}
                                 bordered
                                 disableFirstCallApi={true}
                                 pagination={false}
                             />
-                            <Pagination
-                                total={devices?.length}
-                                current={current}
-                                onChange={setCurrent}
-                                pageSize={pageSize}
-                            />
+                            <div className='paginations'>
+                                <Pagination
+                                    total={devices?.length}
+                                    current={current}
+                                    onChange={setCurrent}
+                                    pageSize={pageSize}
+                                    showSizeChanger={false}
+                                />
+                            </div>
+
                         </div>
                         <div className='btn_add_device' onClick={linkAddDevice}>
-
                             <IconAddDevice />
                             {formatMessage('common.adddevice')}
                         </div>

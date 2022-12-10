@@ -33,6 +33,8 @@ import { values } from 'lodash';
 import { DatabaseTwoTone } from '@ant-design/icons';
 import { onAuthStateChanged } from 'firebase/auth'
 import { FirebaseConfig } from 'src/firebase/configs';
+import { AiFillCaretDown } from 'react-icons/ai';
+import { IconAddDevice } from '@shared/components/iconsComponent';
 const { RangePicker } = DatePicker
 const { Search } = Input;
 const { Option, OptGroup } = Select;
@@ -366,7 +368,7 @@ const ProvideNumber = () => {
                             ))} */}
                             <div className='sortt'>
                                 <label>{formatMessage('common.servicename')}</label>
-                                <Select defaultValue={formatMessage('common.all')} className="margin-select" onChange={hanldeFilterServiceName}>
+                                <Select suffixIcon={<AiFillCaretDown />} defaultValue={formatMessage('common.all')} className="margin-select" onChange={hanldeFilterServiceName}>
                                     <Option value="All">{formatMessage('common.all')}</Option>
                                     {services.map((item, index) => {
 
@@ -378,7 +380,7 @@ const ProvideNumber = () => {
                             </div>
                             <div className='sortt'>
                                 <label>{formatMessage('common.tr')}</label>
-                                <Select defaultValue={formatMessage('common.all')} className="margin-select" onChange={hanldeStatus}>
+                                <Select suffixIcon={<AiFillCaretDown />} defaultValue={formatMessage('common.all')} className="margin-select" onChange={hanldeStatus}>
                                     <Option value="All">{formatMessage('common.all')}</Option>
                                     {NameStatus.map((item, index) => {
                                         return (
@@ -391,7 +393,7 @@ const ProvideNumber = () => {
                             </div>
                             <div className='sortt'>
                                 <label>{formatMessage('common.nguon')}</label>
-                                <Select defaultValue={formatMessage('common.all')} className="margin-select" onChange={handleFilterSource}>
+                                <Select suffixIcon={<AiFillCaretDown />} defaultValue={formatMessage('common.all')} className="margin-select" onChange={handleFilterSource}>
                                     <Option value="All">{formatMessage('common.all')}</Option>
                                     <Option value='displaycounter' >{formatMessage('common.displaycounter')}</Option>
                                 </Select>
@@ -421,6 +423,7 @@ const ProvideNumber = () => {
 
                             <TableComponent
                                 // apiServices={}
+                                style={{ width: 1050 }}
                                 defaultOption={filter}
                                 translateFirstKey="homepage"
                                 rowKey={res => res[idChooses]}
@@ -432,14 +435,17 @@ const ProvideNumber = () => {
                                 disableFirstCallApi={true}
                                 pagination={false}
                             />
-                            <Pagination
-                                total={data?.length}
-                                current={current}
-                                onChange={setCurrent}
-                                pageSize={pageSize}
-                            />
+                            <div className='paginations'>
+                                <Pagination
+                                    total={data?.length}
+                                    current={current}
+                                    onChange={setCurrent}
+                                    pageSize={pageSize}
+                                />
+                            </div>
                         </div>
                         <div className='btn_add_device' onClick={linkAddDevice}>
+                            <IconAddDevice />
                             {formatMessage('common.providenewnunber')}
                         </div>
                     </div>

@@ -10,7 +10,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { createHistorys } from '@modules/history/historyStore';
 import { FirebaseConfig } from 'src/firebase/configs';
 import { createRoles } from '@modules/rolenew/rolenewStore';
-
+import { routerViewRole } from '../router';
 const { TextArea } = Input;
 export interface roleType {
     id?: string
@@ -155,7 +155,7 @@ const AddRole = () => {
 
     return (
         <div className="addrole__page">
-            <MainTitleComponent breadcrumbs={routerViewAddRole} />
+            <MainTitleComponent breadcrumbs={[routerViewRole, routerViewAddRole]} />
             <div className='title__addrole'>{formatMessage('common.roles')}</div>
             <div className='main_page'>
                 <div className='name__addrole'>{formatMessage('common.roleinfo')}</div>

@@ -13,6 +13,8 @@ import { createService } from '@modules/service/serviceStore';
 import { useAppDispatch, useAppSelector } from '@shared/hook/reduxhook';
 import { onAuthStateChanged } from 'firebase/auth'
 import { createHistorys } from '@modules/history/historyStore';
+import { routerViewService } from '../router';
+import moment from 'moment';
 type serviceProps = {
     id?: string
     serviceID: string;
@@ -64,13 +66,7 @@ const Service = () => {
     const services = useAppSelector((state) => state.service.services)
 
     var presentDate = new Date();
-    var date = presentDate.getDate()
-    var month = presentDate.getMonth()
-    var year = presentDate.getFullYear()
-    var hour = presentDate.getHours()
-    var minutes = presentDate.getMinutes()
-    var seconds = presentDate.getSeconds()
-    var time = `${hour < 10 ? `0${hour}` : hour}:${minutes < 10 ? `0${minutes}` : minutes} - ${date < 10 ? `0${date}` : date}/${month < 10 ? `0${month}` : month}/${year}`
+    var time = moment(presentDate).format('HH:mm - DD/MM/YYYY')
 
     const handleCancel = () => {
         navigate('/service')
@@ -124,7 +120,7 @@ const Service = () => {
     }, [])
     return (
         <div className="addservice__page">
-            <MainTitleComponent breadcrumbs={routerViewAddService} />
+            <MainTitleComponent breadcrumbs={[routerViewService, routerViewAddService]} />
             <div className='title__addservice'>
                 {formatMessage('common.serviceql')}
                 <div className='box__addservice'>

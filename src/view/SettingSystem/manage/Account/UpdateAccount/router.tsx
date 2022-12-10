@@ -5,6 +5,6 @@ export const routerUpdateAccount: IRouter = {
   path: '/updateaccount/:id',
   loader: import('./UpdateAccount'),
   exact: true,
-  name: 'common.homepage',
+  name: 'common.settingupdateaccount',
 
 };
